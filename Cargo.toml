@@ -1,0 +1,10 @@
+[package]
+name = "advent-of-code-2018"
+version = "0.1.0"
+authors = ["sagalasan <cmdmdsm@gmail.com>"]
+
+[dependencies]
+failure = "0.1"
+lazy_static = "1"
+itertools = "0.7"
+regex = "1"
