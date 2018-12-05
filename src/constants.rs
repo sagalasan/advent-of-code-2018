@@ -20,3 +20,7 @@ pub fn day_3_input() -> Vec<String> {
         .map(|s| s.to_owned())
         .collect()
 }
+
+pub fn day_4_input() -> &'static str {
+    include_str!("../resources/day04part01.txt")
+}

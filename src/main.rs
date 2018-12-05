@@ -3,6 +3,7 @@ extern crate lazy_static;
 #[macro_use]
 extern crate itertools;
 extern crate regex;
+extern crate chrono;
 
 pub type Error = Box<std::error::Error>;
 
@@ -14,6 +15,7 @@ mod constants;
 mod day01;
 mod day02;
 mod day03;
+mod day04;
 
 fn main() {
     run_all();
@@ -27,6 +29,8 @@ pub fn run_all() {
         (2, 2),
         (3, 1),
         (3, 2),
+        (4, 1),
+        (4, 2),
     ];
 
     for (day, part) in runners.iter() {
@@ -42,6 +46,8 @@ pub fn run(day: usize, part: usize) {
         (2, 2) => day02::Part2::solve(constants::day_2_input()).to_string(),
         (3, 1) => day03::Part1::solve(constants::day_3_input()).unwrap().to_string(),
         (3, 2) => day03::Part2::solve(constants::day_3_input()).unwrap().to_string(),
+        (4, 1) => day04::Part1::solve(constants::day_4_input()).unwrap().to_string(),
+        (4, 2) => day04::Part2::solve(constants::day_4_input()).unwrap().to_string(),
         (_, _) => panic!(format!("Day: {}, Part {} UNIMPLEMENTED", day, part)),
     };
 
