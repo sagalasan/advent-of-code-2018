@@ -19,7 +19,7 @@ impl<T> Solve<T> for Part2<T>
 
     fn solve(input: T) -> <Self as Solve<T>>::Output {
         let pairs: Vec<(char, char)> = "abcdefghijklmnopqrstuvwxyz".chars()
-            .map(|c| (c, c.to_uppercase().nth(0).unwrap()))
+            .map(|c| (c, c.to_ascii_uppercase()))
             .collect();
 
         let chars: Vec<char> = input.as_ref().chars().collect();
