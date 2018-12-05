@@ -24,3 +24,7 @@ pub fn day_3_input() -> Vec<String> {
 pub fn day_4_input() -> &'static str {
     include_str!("../resources/day04part01.txt")
 }
+
+pub fn day_5_input() -> &'static str {
+    include_str!("../resources/day05part01.txt")
+}

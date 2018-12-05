@@ -15,6 +15,7 @@ mod day01;
 mod day02;
 mod day03;
 mod day04;
+mod day05;
 
 fn main() {
     run_all();
@@ -30,6 +31,8 @@ pub fn run_all() {
         (3, 2),
         (4, 1),
         (4, 2),
+        (5, 1),
+        (5, 2),
     ];
 
     for (day, part) in runners.iter() {
@@ -47,6 +50,8 @@ pub fn run(day: usize, part: usize) {
         (3, 2) => day03::Part2::solve(constants::day_3_input()).unwrap().to_string(),
         (4, 1) => day04::Part1::solve(constants::day_4_input()).unwrap().to_string(),
         (4, 2) => day04::Part2::solve(constants::day_4_input()).unwrap().to_string(),
+        (5, 1) => day05::Part1::solve(constants::day_5_input()).to_string(),
+        (5, 2) => day05::Part2::solve(constants::day_5_input()).to_string(),
         (_, _) => panic!(format!("Day: {}, Part {} UNIMPLEMENTED", day, part)),
     };
 
