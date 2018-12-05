@@ -122,16 +122,12 @@ impl fmt::Display for GridItem {
             GridItem::Empty => write!(f, "."),
             GridItem::Occupied(id) => write!(f, "{}", id),
             GridItem::Overlapping => write!(f, "X"),
-        };
-
-        Ok(())
+        }
     }
 }
 
 pub struct Grid {
     inner: Vec<Vec<GridItem>>,
-    rows: usize,
-    cols: usize,
 }
 
 impl Grid {
@@ -146,13 +142,11 @@ impl Grid {
 
         Self {
             inner,
-            rows,
-            cols
         }
     }
 
     pub fn get(&mut self, row: usize, col: usize) -> Option<&mut GridItem> {
-        let mut inner = match self.inner.get_mut(row) {
+        let inner = match self.inner.get_mut(row) {
             Some(inner) => inner,
             None => return None,
         };

@@ -3,7 +3,7 @@ use super::*;
 use std::str::FromStr;
 use std::collections::{HashMap};
 
-use chrono::{NaiveDateTime, DateTime, Date, Utc, Timelike};
+use chrono::{NaiveDateTime, DateTime, Date, Utc};
 use regex::Regex;
 use itertools::{Itertools};
 
@@ -32,8 +32,6 @@ impl<T> Solve<T> for Part1<T>
                 .map(|e| (e.time, e.event_type.clone()))
                 .collect();
 
-            let mut events_idx: usize = 0;
-
             let mut dates: Vec<Date<Utc>> = events.iter()
                 .map(|e| e.time.date())
                 .dedup()
@@ -59,9 +57,9 @@ impl<T> Solve<T> for Part1<T>
             asleep.insert(key, times);
         }
 
-        let (guard_id, max_asleep) = asleep.iter()
+        let (guard_id, _max_asleep) = asleep.iter()
             .map(|(id, times)| (id, times.iter().sum::<usize>()))
-            .max_by_key(|(id, count)| *count)
+            .max_by_key(|(_id, count)| *count)
             .ok_or("Not enough events")?;
 
         let max_minute = asleep.get(guard_id).unwrap()
@@ -100,8 +98,6 @@ impl<T> Solve<T> for Part2<T>
                 .map(|e| (e.time, e.event_type.clone()))
                 .collect();
 
-            let mut events_idx: usize = 0;
-
             let mut dates: Vec<Date<Utc>> = events.iter()
                 .map(|e| e.time.date())
                 .dedup()
@@ -127,12 +123,12 @@ impl<T> Solve<T> for Part2<T>
             asleep.insert(key, times);
         }
 
-        let (guard_id, (max_idx, max)) = asleep.iter()
+        let (guard_id, (max_idx, _max)) = asleep.iter()
             .map(|(id, times)| (id, times.iter()
                 .enumerate()
                 .max_by_key(|(_i, x)| *x)
                 .unwrap_or((0_usize, &0_usize))))
-            .max_by_key(|(id, (max_idx, max))| *max)
+            .max_by_key(|(_id, (_max_idx, max))| *max)
             .ok_or("Not enouch events")?;
 
         Ok(*guard_id * max_idx as u64)

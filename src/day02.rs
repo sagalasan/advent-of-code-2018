@@ -72,7 +72,7 @@ fn duplicates(string: &str) -> Vec<(u8, u64)> {
     }
 
     map.iter()
-        .filter(|(&b, &c)| c == 2 || c == 3)
+        .filter(|(&_b, &c)| c == 2 || c == 3)
         .map(|(&b, &c)| (b, c))
         .collect()
 }
